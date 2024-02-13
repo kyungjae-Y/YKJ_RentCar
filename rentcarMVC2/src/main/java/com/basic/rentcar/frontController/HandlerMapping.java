@@ -2,6 +2,7 @@ package com.basic.rentcar.frontController;
 
 import java.util.HashMap;
 
+import com.basic.rentcar.controller.user.JoinUserController;
 import com.basic.rentcar.controller.user.LoginCheckController;
 import com.basic.rentcar.controller.user.MainController;
 import com.basic.rentcar.controller.user.ValidateIdController;
@@ -12,8 +13,9 @@ public class HandlerMapping {
 	public HandlerMapping() {
 		mappings = new HashMap<String, Controller>();
 		mappings.put("/main.do", new MainController());
+		
+		mappings.put("/userAdd.do", new JoinUserController());
 		mappings.put("/userLogin.do", new LoginCheckController());
-		mappings.put("/validateId.do", new ValidateIdController());
 		mappings.put("/validateId.do", new ValidateIdController());
 	}
 

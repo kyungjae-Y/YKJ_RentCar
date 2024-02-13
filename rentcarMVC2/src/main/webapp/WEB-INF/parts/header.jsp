@@ -8,22 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${vo.id eq null}">
-		<c:out value="GUEST" />
-	</c:if>
 	<table>
 		<tr height="70">
 			<td colspan="4">
 				<a href="${ctx}/main.jsp" style="text-decoration: none">
-					<img alt="" src="../../img/rent_logo.jpg" height="120">
+					<img alt="" src="img/rent_logo.jpg" height="120">
 				</a>
 			</td>
 			<td align="center" width="200">
+				<c:if test="${id eq null}">
+					<c:out value="GUEST" />
+				</c:if>
 				${vo.id} 님
-				<c:if test="${vo.id eq 'GUEST'}">
+				<c:if test="${id eq 'GUEST'}">
 					<button onclick="location.href='${ctx}/main.jsp?center=${ctx}/login.jsp' ">로그인</button>
 				</c:if>
-				<c:if test="${vo.id ne 'GUEST'}">
+				<c:if test="${id ne 'GUEST'}">
 					<button onclick="location.href='${ctx}/logout.jsp' ">로그아웃</button>
 				</c:if>
 			</td>
