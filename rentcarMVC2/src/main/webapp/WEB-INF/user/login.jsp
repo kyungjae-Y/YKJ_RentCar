@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="memberLogin.do" method="post">
+	<form action="userLogin.do" method="post">
 		<table border="1">
 			<tr height="100">
 				<td align="center" colspan="2">로그인</td>

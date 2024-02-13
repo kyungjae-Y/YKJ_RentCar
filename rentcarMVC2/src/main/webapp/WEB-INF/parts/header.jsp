@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../main.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +21,19 @@
 			<td align="center" width="200">
 				${vo.id} 님
 				<c:if test="${vo.id eq 'GUEST'}">
-					<button onclick=""></button>
+					<button onclick="location.href='${ctx}/main.jsp?center=${ctx}/login.jsp' ">로그인</button>
 				</c:if>
+				<c:if test="${vo.id ne 'GUEST'}">
+					<button onclick="location.href='${ctx}/logout.jsp' ">로그아웃</button>
+				</c:if>
+			</td>
+		</tr>
+		<tr height="50">
+			<td align="center" width="200" bgcolor="pink">
+				<font color="white" size="5"><a href="${ctx}/main.jsp?center=reserveCarMain.jsp" style="text-decoration: none">예약하기</a></font>
+			</td>
+			<td align="center" width="200" bgcolor="pink">
+				<font color="white" size="5"><a href="${ctx}/main.jsp?center=reserveCarView.jsp" style="text-decoration: none">예약확인</a></font>
 			</td>
 		</tr>
 	</table>
