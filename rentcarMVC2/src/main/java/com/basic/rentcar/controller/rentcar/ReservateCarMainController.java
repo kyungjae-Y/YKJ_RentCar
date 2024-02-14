@@ -10,13 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.vo.JoinCarView;
+import com.basic.rentcar.vo.Rentcar;
 
-public class ReservateCarController implements Controller {
+public class ReservateCarMainController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RentCarDAO rdao = RentCarDAO.getInstance();
-		ArrayList<JoinCarView> list = rdao.getAllReserve("id");
+		ArrayList<Rentcar> list = rdao.getSelectCar();
 		HttpSession session = request.getSession();
 		session.setAttribute("list", list);
 		String center = request.getParameter("center");

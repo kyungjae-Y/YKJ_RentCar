@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../main.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,22 +15,22 @@
 					<font size="6" color="gray">최신형 자동차</font>
 				</td>
 			</tr>
-			<c:forEach var="vo" items="${list}">
-				<tr height="240">
+			<tr height="240">
+				<c:forEach var="vo" items="${list}">
 					<td width="333" align="center">
-						<a href="${ctx}/main.jsp?center=reserveCarInfo.jsp?no=${vo.no}">
+						<a href="${ctx}/carInfo.do?center=rentcar/reserveCarInfo.jsp&no=${vo.no}">
 							<img alt="" src="img/${vo.img}" width="300" height="220">
 						</a>
 						<p>차량명 : ${vo.name}</p>
 					</td>
-				</tr>
-			</c:forEach>
+				</c:forEach>
+			</tr>
 		</table>
 		<hr size="3" color="red">
 		<p>
 			<font size="4" color="gray"><b>차량 검색 하기</b></font>
 		</p>
-		<form action="${ctx}/main.jsp?center=carCategoryList.do" method="post">
+		<form action="${ctx}/main.do?center=rentcar/carCategoryList.jsp" method="post">
 			<font size="3" color="gray"><b>차량 검색 하기</b></font>
 			<select name="category">
 				<option value="1">소형</option>
@@ -38,7 +39,7 @@
 			</select>
 			<input type="submit" value="검색" />
 		</form>
-		<button onclick="location.href='${ctx}/main.jsp?center=rentCarList.jsp' ">전체 검색</button>
+		<button onclick="location.href='${ctx}/main.do?center=rentcar/rentCarList.jsp' ">전체 검색</button>
 	</div>
 </body>
 </html>

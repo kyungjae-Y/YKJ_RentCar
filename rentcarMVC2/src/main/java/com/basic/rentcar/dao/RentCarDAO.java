@@ -38,7 +38,7 @@ public class RentCarDAO {
 	}
 
 	public int getUser(String id, String pw) {
-		String SQL = "select * from user where id=? and pw=?";
+		String SQL = "select * from member where id=? and pw=?";
 		getConnection();
 		int cnt = 0;
 		try {
@@ -72,11 +72,10 @@ public class RentCarDAO {
 				rc.setCategory(rs.getInt("category"));
 				rc.setPrice(rs.getInt("price"));
 				rc.setUsepeople(rs.getInt("usepeople"));
-				rc.setTotalQty(rs.getInt("totalqty"));
+				rc.setTotalQty(rs.getInt("total_qty"));
 				rc.setCompany(rs.getString("company"));
 				rc.setImg(rs.getString("img"));
 				rc.setInfo(rs.getString("info"));
-
 				carlist.add(rc);
 				cnt++;
 				if (cnt > 2)
@@ -104,7 +103,7 @@ public class RentCarDAO {
 				rc.setCategory(rs.getInt("category"));
 				rc.setPrice(rs.getInt("price"));
 				rc.setUsepeople(rs.getInt("usepeople"));
-				rc.setTotalQty(rs.getInt("totalqty"));
+				rc.setTotalQty(rs.getInt("total_qty"));
 				rc.setCompany(rs.getString("company"));
 				rc.setImg(rs.getString("img"));
 				rc.setInfo(rs.getString("info"));
@@ -248,14 +247,14 @@ public class RentCarDAO {
 		}
 		return jclist;
 	}
-	
+
 	public void carRemoveReserve(int reserveSeq, int qty, int no) {
 		String SQL = "delete from carreserve where reserve_seq=?";
 		getConnection();
 		try {
 			ps = conn.prepareStatement(SQL);
 			ps.setInt(1, reserveSeq);
-			if(ps.executeUpdate() > 0) {
+			if (ps.executeUpdate() > 0) {
 				backRentcarQty(no, qty);
 				System.out.println("삭제 완료");
 			}

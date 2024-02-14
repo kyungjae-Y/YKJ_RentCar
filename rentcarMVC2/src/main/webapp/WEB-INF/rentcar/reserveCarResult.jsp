@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:set var="id" value="${sessionScope.id}" />
+	<c:choose>
+		<c:when test="${id eq null}">
+			<script type="text/javascript">
+				alert("로그인 후 예약이 가능 합니다");
+				location.href = 'main.do?center=user/login.jsp';
+			</script>
+		</c:when>
+	</c:choose>
 	<div align="center">
 		<table>
 			<tr height="100">

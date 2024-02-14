@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 import com.basic.rentcar.vo.User;
 
-public class UserDAO {
-	private UserDAO() {
+public class MemberDAO {
+	private MemberDAO() {
 	}
 
-	static private UserDAO instance = new UserDAO();
+	static private MemberDAO instance = new MemberDAO();
 
-	static public UserDAO getInstance() {
+	static public MemberDAO getInstance() {
 		return instance;
 	}
 
@@ -23,7 +23,7 @@ public class UserDAO {
 	private ResultSet rs;
 
 	public void getConnect() {
-		String URL = "jdbc:mysql://localhost:3306/mvc05db?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
+		String URL = "jdbc:mysql://localhost:3306/rentdb01?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
 		String user = "root";
 		String password = "1234";
 		try {
@@ -35,7 +35,7 @@ public class UserDAO {
 	}
 
 	public int userInsert(User u) {
-		String SQL = "insert into user(id,pw,email,tel,hobby,job,age,info) value(?,?,?,?,?,?,?,?)";
+		String SQL = "insert into member(id,pw,email,tel,hobby,job,age,info) value(?,?,?,?,?,?,?,?)";
 		getConnect();
 		int cnt = -1;
 		try {
@@ -58,7 +58,7 @@ public class UserDAO {
 	}
 
 	public ArrayList<User> userList() {
-		String SQL = "select * from user";
+		String SQL = "select * from member";
 		getConnect();
 		ArrayList<User> list = new ArrayList<User>();
 		try {
@@ -86,7 +86,7 @@ public class UserDAO {
 	}
 
 	public boolean isValidId(String id) {
-		String SQL = "select pw from user where id=?";
+		String SQL = "select pw from member where id=?";
 		getConnect();
 		try {
 			ps = conn.prepareStatement(SQL);
@@ -102,7 +102,7 @@ public class UserDAO {
 	}
 
 	public boolean checkLogin(String id, String pw) {
-		String SQL = "select * from user where id=? and pw=?";
+		String SQL = "select * from member where id=? and pw=?";
 		getConnect();
 		try {
 			ps = conn.prepareStatement(SQL);
@@ -119,7 +119,7 @@ public class UserDAO {
 	}
 
 	public int getUserNo(String id) {
-		String SQL = "select no from user where id=?";
+		String SQL = "select no from member where id=?";
 		getConnect();
 		try {
 			ps = conn.prepareStatement(SQL);
@@ -137,7 +137,7 @@ public class UserDAO {
 	}
 
 	public int userDelete(String id) {
-		String SQL = "delete from user where id=?";
+		String SQL = "delete from member where id=?";
 		getConnect();
 		int cnt = -1;
 		try {
@@ -153,7 +153,7 @@ public class UserDAO {
 	}
 
 	public User userContent(int no) {
-		String SQL = "select * from user where no=?";
+		String SQL = "select * from member where no=?";
 		getConnect();
 		User u = null;
 		try {
@@ -180,7 +180,7 @@ public class UserDAO {
 	}
 
 	public int userUpdate(User u) {
-		String SQL = "update user set pw=?, email=?, tel=?, hobby=?, job=?, age=?, info=?";
+		String SQL = "update member set pw=?, email=?, tel=?, hobby=?, job=?, age=?, info=?";
 		getConnect();
 		int cnt = -1;
 		try {

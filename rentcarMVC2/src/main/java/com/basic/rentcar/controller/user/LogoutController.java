@@ -5,15 +5,16 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.frontController.Controller;
 
-public class MainController implements Controller {
-
+public class LogoutController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String center = request.getParameter("center");
-		request.setAttribute("center", center);
-		return "main";
+		HttpSession session = request.getSession();
+		session.removeAttribute("id");
+		String ctx = request.getContextPath();
+		return "redirect:" + ctx + "/main.do";
 	}
 }

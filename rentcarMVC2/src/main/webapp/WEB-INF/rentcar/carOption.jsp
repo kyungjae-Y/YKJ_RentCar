@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${ctx}/main.jsp?center=reserveCarResult.do" method="post">
+	<c:set var="id" value="${sessionScope.id}" />
+	<c:choose>
+		<c:when test="${id eq null}">
+			<script type="text/javascript">
+				alert("로그인을 먼저 해주세요");
+				location.href = 'main.do?center=user/login.jsp';
+			</script>
+		</c:when>
+	</c:choose>
+	<form action="${ctx}/reservateCarResult.do?center=rentcar/reserveCarResult.jsp" method="post">
 		<table>
 			<tr height="100">
 				<td align="center" colspan="3">
@@ -15,7 +26,7 @@
 			</tr>
 			<tr>
 				<td rowspan="7" width="500" align="center">
-					<img alt="" src="img/${vo.img}" width="450">
+					<img alt="" src="img/${img}" width="450">
 				</td>
 				<td width="250" align="center">대여기간</td>
 				<td width="250" align="center">
@@ -34,6 +45,14 @@
 				<td width="250" align="center">대여일</td>
 				<td width="250" align="center">
 					<input type="date" name="rday" id="today" size="15" />
+					<c:choose>
+						<c:when test="${compare < 0}">
+							<script type="text/javascript">
+								alert('현재 시스템 날짜보다 이전 날짜는 선택할 수 없음');
+								history.go(-1);
+							</script>
+						</c:when>
+					</c:choose>
 				</td>
 			</tr>
 			<tr>
@@ -74,8 +93,8 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
-					<input type="hidden" name="no" value="${vo.no}" />
-					<input type="hidden" name="qty" value="${vo.qty}" />
+					<input type="hidden" name="no" value="${no}" />
+					<input type="hidden" name="qty" value="${qty}" />
 					<input type="submit" value="차량 예약하기" />
 				</td>
 			</tr>
@@ -83,8 +102,3 @@
 	</form>
 </body>
 </html>
-
-<script type="text/javascript">
-	alert("로그인 먼저 해주세요");
-	location.href = '${ctx}main.jsp?center=login.jsp';
-</script>
