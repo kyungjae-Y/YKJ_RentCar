@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../../script/join.js" %>
-<%@ include file="../main.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 class="py-3">회원 가입</h1>
-	<form action="${ctx}/userAdd.do" method="post" enctype="multipart/form-data">
+	<form action="${ctx}/userAdd.do" method="post">
 		<table class="table table-bordered">
 			<tr>
 				<td>아이디</td>
@@ -61,7 +60,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" id="btns">
+				<td colspan="2" id="btns" align="center">
 					<input type="button" value="가입" class="col-3 btn btn-primary" onclick="validCheck(form)" />
 					<input type="reset" value="취소" class="col-3 btn btn-warning" />
 				</td>
@@ -69,4 +68,5 @@
 		</table>
 	</form>
 </body>
+<script src="${ctx}/script/join.js"></script>
 </html>

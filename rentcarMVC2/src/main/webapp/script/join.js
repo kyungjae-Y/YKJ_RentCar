@@ -2,7 +2,7 @@ let check = 0;
 
 function validCheck(form) {
 	if (!form.id.value.trim()) {
-		alret("아이디를 입력해주세요");
+		alert("아이디를 입력해주세요");
 		form.id.focus();
 		return false;
 	}
@@ -12,7 +12,7 @@ function validCheck(form) {
 		return false;
 	}
 	if (!form.email.value.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)) {
-		alret("이메일 형식이 다릅니다");
+		alert("이메일 형식이 다릅니다");
 		form.email.value = "test@test.com";
 		form.email.focus();
 		return false;
@@ -39,7 +39,7 @@ function validCheck(form) {
 		return false;
 	} else {
 		if (Number(form.age.value.trim()) < 20) {
-			alert("20살 이하는 가입할 수 없습니다");
+			alert("20살 밑으로는 가입할 수 없습니다");
 			form.age.focus();
 			return false;
 		}
@@ -81,7 +81,7 @@ document.getElementById("checkId").addEventListener("click", () => {
 
 function getResult(data) {
 	if (data === "valid") {
-		alret("사용 가능한 아이디 입니다");
+		alert("사용 가능한 아이디 입니다");
 		document.getElementById("pw").focus();
 		document.getElementById("id").style.border = "3px blue solid";
 		check = 1;

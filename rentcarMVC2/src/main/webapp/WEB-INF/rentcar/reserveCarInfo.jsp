@@ -8,6 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:choose>
+		<c:when test="${vo.totalQty eq 0}">
+			<script type="text/javascript">
+				alert("이 차량은 모두 대여중입니다");
+				location.href = 'main.do?center=rentcar/reserveCarMain.jsp';
+			</script>
+		</c:when>
+	</c:choose>
 	<div align="center">
 		<form action="${ctx}/selectCarOption.do?center=rentcar/carOption.jsp" method="post">
 			<table>

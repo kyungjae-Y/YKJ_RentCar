@@ -3,3 +3,11 @@
 table {
 	margin: auto;
 }
+
+tr {
+	height: "100";
+}
+
+td {
+	align-items: center;
+}

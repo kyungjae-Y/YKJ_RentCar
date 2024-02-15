@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
 <body>
 	<c:set var="id" value="${sessionScope.id}" />
 	<c:choose>
@@ -30,7 +24,7 @@
 				<td width="150" align="center">이미지</td>
 				<td width="150" align="center">이름</td>
 				<td width="150" align="center">대여일</td>
-				<td width="60" align="center">대여기간</td>
+				<td width="90" align="center">대여기간</td>
 				<td width="100" align="center">금액</td>
 				<td width="60" align="center">수량</td>
 				<td width="60" align="center">보험</td>
@@ -54,7 +48,7 @@
 					<td height="60" align="center">${vo.useseat}</td>
 					<td height="60" align="center">${vo.usenavi}</td>
 					<td height="90" align="center">
-						<button onclick="location.href='reserveCarDelete.jsp?resSeq=${vo.reserve_seq}&qty=${vo.qty}&no=${vo.no}' ">삭제</button>
+						<button onclick="location.href='deleteRes.do?resSeq=${vo.reserveSeq}&qty=${vo.qty}&no=${vo.no}' ">삭제</button>
 					</td>
 				</tr>
 			</c:forEach>

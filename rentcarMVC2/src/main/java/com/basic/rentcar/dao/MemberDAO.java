@@ -23,7 +23,7 @@ public class MemberDAO {
 	private ResultSet rs;
 
 	public void getConnect() {
-		String URL = "jdbc:mysql://localhost:3306/rentdb01?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
+		String URL = "jdbc:mysql://localhost:3306/rentcardb01?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
 		String user = "root";
 		String password = "1234";
 		try {
@@ -37,6 +37,7 @@ public class MemberDAO {
 	public int userInsert(User u) {
 		String SQL = "insert into member(id,pw,email,tel,hobby,job,age,info) value(?,?,?,?,?,?,?,?)";
 		getConnect();
+		System.out.println(u.getId());
 		int cnt = -1;
 		try {
 			ps = conn.prepareStatement(SQL);
@@ -179,8 +180,35 @@ public class MemberDAO {
 		return u;
 	}
 
+	public User userInfo(String id) {
+		String SQL = "select * from member where id=?";
+		getConnect();
+		User u = null;
+		try {
+			ps = conn.prepareStatement(SQL);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				int no = rs.getInt("no");
+				String pw = rs.getString("pw");
+				String email = rs.getString("email");
+				String tel = rs.getString("tel");
+				String hobby = rs.getString("hobby");
+				String job = rs.getString("job");
+				String age = rs.getString("age");
+				String info = rs.getString("info");
+				u = new User(no, id, pw, email, tel, hobby, job, age, info);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return u;
+	}
+
 	public int userUpdate(User u) {
-		String SQL = "update member set pw=?, email=?, tel=?, hobby=?, job=?, age=?, info=?";
+		String SQL = "update member set pw=?, email=?, tel=?, hobby=?, job=?, age=?, info=? where id=?";
 		getConnect();
 		int cnt = -1;
 		try {

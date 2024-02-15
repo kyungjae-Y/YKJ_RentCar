@@ -17,6 +17,20 @@
 			</script>
 		</c:when>
 	</c:choose>
+	<c:choose>
+		<c:when test="${compare < 0}">
+			<script type="text/javascript">
+				alert('현재 시스템 날짜보다 이전 날짜는 선택할 수 없음');
+				history.go(-1);
+			</script>
+		</c:when>
+		<c:when test="${compare == 0}">
+			<script type="text/javascript">
+				alert('날짜를 선택해주세요');
+				history.go(-1);
+			</script>
+		</c:when>
+	</c:choose>
 	<div align="center">
 		<table>
 			<tr height="100">
@@ -26,7 +40,7 @@
 			</tr>
 			<tr height="100">
 				<td align="center">
-					<img src="img/${img}" width="470" />
+					<img src="img/${rentcar.img}" width="470" />
 				</td>
 			</tr>
 			<tr height="50">

@@ -16,8 +16,8 @@ public class ReservateCarController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RentCarDAO rdao = RentCarDAO.getInstance();
-		ArrayList<JoinCarView> list = rdao.getAllReserve("id");
 		HttpSession session = request.getSession();
+		ArrayList<JoinCarView> list = rdao.getAllReserve((String) session.getAttribute("id"));
 		session.setAttribute("list", list);
 		String center = request.getParameter("center");
 		request.setAttribute("center", center);

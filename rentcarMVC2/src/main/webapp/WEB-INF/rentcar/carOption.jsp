@@ -45,14 +45,6 @@
 				<td width="250" align="center">대여일</td>
 				<td width="250" align="center">
 					<input type="date" name="rday" id="today" size="15" />
-					<c:choose>
-						<c:when test="${compare < 0}">
-							<script type="text/javascript">
-								alert('현재 시스템 날짜보다 이전 날짜는 선택할 수 없음');
-								history.go(-1);
-							</script>
-						</c:when>
-					</c:choose>
 				</td>
 			</tr>
 			<tr>
@@ -60,7 +52,7 @@
 				<td width="250" align="center">
 					<select name="usein">
 						<option value="1">적용(1일 1만원)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 					</select>
 				</td>
 			</tr>
@@ -69,7 +61,7 @@
 				<td width="250" align="center">
 					<select name="usewifi">
 						<option value="1">적용(1일 1만원)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 					</select>
 				</td>
 			</tr>
@@ -78,7 +70,7 @@
 				<td width="250" align="center">
 					<select name="usenavi">
 						<option value="1">적용(무료)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 					</select>
 				</td>
 			</tr>
@@ -87,7 +79,7 @@
 				<td width="250" align="center">
 					<select name="useseat">
 						<option value="1">적용(1일 1만원)</option>
-						<option value="2">비적용</option>
+						<option value="0">비적용</option>
 					</select>
 				</td>
 			</tr>

@@ -18,7 +18,7 @@
 			<c:forEach var="vo" items="${list}">
 				<tr height="220">
 					<td width="333" align="center">
-						<a href="${ctx}/main.do?center=${ctx}/reserveCarView.do?no=${vo.no}">
+						<a href="${ctx}/main.do?center=reserveCarView.do?no=${vo.no}">
 							<img alt="" src="img/${vo.img}" width="300" height="200">
 						</a>
 						<p>

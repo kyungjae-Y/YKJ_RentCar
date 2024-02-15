@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
@@ -20,9 +21,11 @@ public class ReservateCarResultController implements Controller {
 		Date d1 = new Date();
 		Date d2 = new Date();
 
+		HttpSession session = request.getSession();
+
 		Reservation resev = new Reservation();
 		resev.setNo(Integer.parseInt(request.getParameter("no")));
-		resev.setId(request.getParameter("id"));
+		resev.setId((String) session.getAttribute("id"));
 		resev.setQty(Integer.parseInt(request.getParameter("qty")));
 		resev.setDday(Integer.parseInt(request.getParameter("dday")));
 		resev.setRday(request.getParameter("rday"));
@@ -40,8 +43,8 @@ public class ReservateCarResultController implements Controller {
 		}
 		int compare = d1.compareTo(d2);
 		request.setAttribute("compare", compare);
-
-		String id1 = request.getParameter("id");
+		System.out.println("compare : " + compare);
+		String id1 = (String) session.getAttribute("id");
 		resev.setId(id1);
 
 		RentCarDAO rdao = RentCarDAO.getInstance();
@@ -66,6 +69,14 @@ public class ReservateCarResultController implements Controller {
 		int totalOption = (resev.getQty() * resev.getDday() * (usein + usewifi + useseat));
 		request.setAttribute("totalCar", totalCar);
 		request.setAttribute("totalOption", totalOption);
+
+		String img = request.getParameter("img");
+		request.setAttribute("img", img);
+
+		String center = request.getParameter("center");
+		request.setAttribute("center", center);
+		request.setAttribute("rentcar", rentcar);
+
 		return "main";
 	}
 }

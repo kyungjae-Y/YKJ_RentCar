@@ -117,7 +117,7 @@ public class RentCarDAO {
 	}
 
 	public void setReserveCar(Reservation reser) {
-		String SQL = "insert into careserve(no, id, qty, dday, rday," + "usein, userwifi, usenavi, useseat)" + "values(?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into carreserve(no, id, qty, dday, rday," + "usein, usewifi, usenavi, useseat)" + "values(?,?,?,?,?,?,?,?,?)";
 		getConnection();
 		try {
 			ps = conn.prepareStatement(SQL);
@@ -216,7 +216,7 @@ public class RentCarDAO {
 	}
 
 	public ArrayList<JoinCarView> getAllReserve(String id) {
-		String SQL = "select * from rentcar a2, carreserve al where a1.id=? and a1.no = a2.no";
+		String SQL = "select * from rentcar a2, carreserve a1 where a1.id=? and a1.no = a2.no";
 		ArrayList<JoinCarView> jclist = new ArrayList<>();
 		JoinCarView jc = null;
 		getConnection();

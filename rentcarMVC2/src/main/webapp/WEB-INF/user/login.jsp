@@ -7,7 +7,7 @@
 </head>
 <body>
 	<form action="userLogin.do" method="post">
-		<table border="1">
+		<table class="table table-bordered">
 			<tr height="100">
 				<td align="center" colspan="2">
 					<font size="6" color="gray">로그인</font>

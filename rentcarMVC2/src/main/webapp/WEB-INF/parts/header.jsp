@@ -19,9 +19,10 @@
 				<c:if test="${id eq null}">
 					<c:out value="GUEST" />
 				</c:if>
-				${id} 님
+				<a href="userInfo.do?center=user/userInfo.jsp">${id}</a> 님
 				<c:if test="${id eq null}">
 					<button onclick="location.href='main.do?center=user/login.jsp' ">로그인</button>
+					<button onclick="location.href='main.do?center=user/join.jsp' ">회원가입</button>
 				</c:if>
 				<c:if test="${id ne null}">
 					<button onclick="location.href='logoutCheck.do' ">로그아웃</button>
