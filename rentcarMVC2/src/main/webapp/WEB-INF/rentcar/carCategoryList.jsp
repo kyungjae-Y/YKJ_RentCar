@@ -20,7 +20,7 @@
 			<c:set var="temp" value="대형" />
 		</c:when>
 	</c:choose>
-	<div align="center">
+	<div align="center" class="myslider">
 		<table>
 			<tr height="60">
 				<td align="center" colspan="3">
@@ -30,7 +30,7 @@
 			<c:forEach var="vo" items="${list}">
 				<c:if test="${vo.category == param.category}">
 					<tr height="220">
-						<td width="333" align="center">
+						<td width="333" align="center" class="cclist">
 							<a href="${ctx}/carInfo.do?center=rentcar/reserveCarInfo.jsp&no=${vo.no}">
 								<img alt="" src="img/${vo.img}" width="300" height="200" />
 							</a>

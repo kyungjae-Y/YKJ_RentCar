@@ -63,6 +63,7 @@
 			</tr>
 		</table>
 	</form>
-	<input type="button" value="삭제하기" class="col-5 btn btn-primary" onclick="${ctx}/deleteUser.do?id=${vo.id}" />
+	<%-- <input type="button" value="삭제하기" class="col-5 btn btn-primary" onclick="${ctx}/deleteUser.do?id=${vo.id}" /> --%>
+	<button onclick="location.href='${ctx}/deleteUser.do?id=${vo.id}'">삭제하기</button>
 </body>
 </html>

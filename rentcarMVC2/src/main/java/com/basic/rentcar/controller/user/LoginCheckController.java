@@ -30,7 +30,7 @@ public class LoginCheckController implements Controller {
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
-			return "main";
+			return "redirect:" + ctx + "/main.do";
 		}
 	}
 }

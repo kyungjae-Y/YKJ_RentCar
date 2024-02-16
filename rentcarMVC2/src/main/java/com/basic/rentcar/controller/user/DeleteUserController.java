@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.MemberDAO;
 import com.basic.rentcar.frontController.Controller;
@@ -16,6 +17,8 @@ public class DeleteUserController implements Controller {
 		int cnt = MemberDAO.getInstance().userDelete(request.getParameter("id"));
 		String center = request.getParameter("center");
 		request.setAttribute("center", center);
+		HttpSession session = request.getSession();
+		session.removeAttribute("id");
 		if (cnt > 0) {
 			return "redirect:" + ctx + "/main.do";
 		} else {

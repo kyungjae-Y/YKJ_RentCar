@@ -22,12 +22,11 @@ public class HandlerMapping {
 		mappings.put("/carInfo.do", new CarInfoController());
 		mappings.put("/carList.do", new CarListController());
 		mappings.put("/deleteRes.do", new DeleteResController());
-//		mappings.put("/insertCar.do", new InsertCarController());
+		mappings.put("/insertCar.do", new InsertCarController());
 		mappings.put("/reservateCarView.do", new ReservateCarController());
 		mappings.put("/reservateCarMain.do", new ReservateCarMainController());
 		mappings.put("/reservateCarResult.do", new ReservateCarResultController());
 		mappings.put("/selectCarOption.do", new SelectCarOptionController());
-//		mappings.put("/uploadCarImg.do", new UploadCarImgConrtroller());
 	}
 
 	public Controller getController(String key) {

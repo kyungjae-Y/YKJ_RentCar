@@ -19,7 +19,8 @@
 				<c:if test="${id eq null}">
 					<c:out value="GUEST" />
 				</c:if>
-				<a href="userInfo.do?center=user/userInfo.jsp">${id}</a> 님
+				<a href="userInfo.do?center=user/userInfo.jsp">${id}</a>
+				님
 				<c:if test="${id eq null}">
 					<button onclick="location.href='main.do?center=user/login.jsp' ">로그인</button>
 					<button onclick="location.href='main.do?center=user/join.jsp' ">회원가입</button>
@@ -40,10 +41,15 @@
 				<font color="white" size="5"><a href="#" style="text-decoration: none">자유게시판</a></font>
 			</td>
 			<td align="center" width="200" bgcolor="pink">
-				<font color="white" size="5"><a href="#" style="text-decoration: none">이벤트</a></font>
+				<font color="white" size="5"><a href="#" style="text-decoration: none">고객센터</a></font>
 			</td>
 			<td align="center" width="200" bgcolor="pink">
-				<font color="white" size="5"><a href="#" style="text-decoration: none">고객센터</a></font>
+				<c:if test="${id ne 'admin'}">
+					<font color="white" size="5"><a href="#" style="text-decoration: none">이벤트</a></font>
+				</c:if>
+				<c:if test="${id eq 'admin'}">
+					<font color="white" size="5"><a href="main.do?center=rentcar/insertCar.jsp" style="text-decoration: none">차량 등록</a></font>
+				</c:if>
 			</td>
 		</tr>
 	</table>

@@ -16,6 +16,8 @@ public class RentcarFrontController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
+		System.out.println("test");
 		String url = request.getRequestURI();
 		String ctx = request.getContextPath();
 		String command = url.substring(ctx.length());
@@ -24,6 +26,8 @@ public class RentcarFrontController extends HttpServlet {
 		HandlerMapping mapping = new HandlerMapping();
 		controller = mapping.getController(command);
 		nextPage = controller.requestHandler(request, response);
+		
+		System.out.println(nextPage);
 		if (nextPage != null) {
 			if (nextPage.indexOf("redirect:") != -1) {
 				response.sendRedirect(nextPage.split(":")[1]);

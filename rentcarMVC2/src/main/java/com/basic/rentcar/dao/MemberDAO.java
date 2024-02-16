@@ -220,6 +220,7 @@ public class MemberDAO {
 			ps.setString(5, u.getJob());
 			ps.setString(6, u.getAge());
 			ps.setString(7, u.getInfo());
+			ps.setString(8, u.getId());
 			cnt = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

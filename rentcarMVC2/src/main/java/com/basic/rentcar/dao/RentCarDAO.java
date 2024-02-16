@@ -116,6 +116,29 @@ public class RentCarDAO {
 		return rc;
 	}
 
+	public int rentcarInsert(Rentcar car) {
+		String SQL = "insert into rentcar(name, category, price, usepeople, total_qty, company, img, info) value(?,?,?,?,?,?,?,?)";
+		getConnection();
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(SQL);
+			ps.setString(1, car.getName());
+			ps.setInt(2, car.getCategory());
+			ps.setInt(3, car.getPrice());
+			ps.setInt(4, car.getUsepeople());
+			ps.setInt(5, car.getTotalQty());
+			ps.setString(6, car.getCompany());
+			ps.setString(7, car.getImg());
+			ps.setString(8, car.getInfo());
+			cnt = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return cnt;
+	}
+
 	public void setReserveCar(Reservation reser) {
 		String SQL = "insert into carreserve(no, id, qty, dday, rday," + "usein, usewifi, usenavi, useseat)" + "values(?,?,?,?,?,?,?,?,?)";
 		getConnection();
@@ -278,6 +301,24 @@ public class RentCarDAO {
 		} finally {
 			dbClose();
 		}
+	}
+
+	public int rentCarUploadImg(int no, String oFileName, String sFileName) {
+		String SQL = "update rentcar set oFileName=? sFileName=? where no=?";
+		getConnection();
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(SQL);
+			ps.setString(1, oFileName);
+			ps.setString(2, sFileName);
+			ps.setInt(3, no);
+			cnt = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return cnt;
 	}
 
 	public void dbClose() {
