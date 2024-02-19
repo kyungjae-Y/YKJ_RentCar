@@ -12,7 +12,7 @@
 		<table>
 			<tr height="120" align="center">
 				<td align="center" width="1000">
-					<%@ include file="/WEB-INF/parts/header.jsp"%>
+					<%@ include file="./parts/header.jsp"%>
 				</td>
 			</tr>
 			<c:choose>
@@ -31,7 +31,7 @@
 			</c:choose>
 			<tr height="100" align="center">
 				<td align="center" width="1000">
-					<%@ include file="/WEB-INF/parts/footer.jsp"%>
+					<%@ include file="./parts/footer.jsp"%>
 				</td>
 			</tr>
 		</table>

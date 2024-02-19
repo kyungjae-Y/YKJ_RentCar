@@ -19,7 +19,7 @@ public class InsertCarController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String saveDirectory = request.getServletContext().getRealPath("/img");
-		String myPath = "C:\\YKJ_RentCar\\rentcarMVC2\\src\\main\\webapp\\img\\";
+		String myPath = "C:\\YKJ_RentCar\\img";
 		Path saveDirPath = Paths.get(saveDirectory);
 		if (!Files.isDirectory(saveDirPath)) {
 			Files.createDirectories(saveDirPath);
