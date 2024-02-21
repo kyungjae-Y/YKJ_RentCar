@@ -42,6 +42,16 @@
 				</c:if>
 			</c:forEach>
 		</table>
+		<form action="${ctx}/carList.do?center=rentcar/carCategoryList.jsp" method="post">
+			<font size="3" color="gray"><b>차량 검색 하기</b></font>
+			<select name="category">
+				<option value="1">소형</option>
+				<option value="2">중형</option>
+				<option value="3">대형</option>
+			</select>
+			<input type="submit" value="검색" />
+		</form>
+		<button onclick="location.href='${ctx}/carList.do?center=rentcar/rentCarList.jsp' ">전체 검색</button>
 	</div>
 </body>
 </html>
