@@ -19,3 +19,6 @@
 
 ## 차량 화면
 <img width="604" alt="image" src="https://github.com/kyungjae-Y/YKJ_RentCar/assets/153978815/6fdafe75-b3f4-4847-9f62-4baa04e692b0">
+
+## 관리자 차량 등록
+<img width="602" alt="image" src="https://github.com/kyungjae-Y/YKJ_RentCar/assets/153978815/a75e219f-8e2c-4491-9100-91a0afb84bf0">
